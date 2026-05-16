@@ -1,0 +1,1 @@
+Sistema simples de organização de estoque desenvolvido para estudos usando Node.js, TypeScript, Express e Bootstrap.
