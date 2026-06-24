@@ -1,41 +1,82 @@
-import "./login.css";
+import {
+    Box,
+    Button,
+    Paper,
+    Typography,
+    TextField
+} from "@mui/material";
 
-type Props = {
-    onLogin: () => void;
-};
+import { useNavigate } from "react-router-dom";
 
-function Login({ onLogin }: Props) {
+function Login() {
+
+    const navigate = useNavigate();
 
     return (
 
-        <div className="login-container">
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100vh"
+                }}
+            >
+            <Paper
+                elevation={4}
+                sx={{
+                    width: 400,
+                    p: 4
+                }}
+            >
 
-            <div className="login-card">
+                <Typography
+                    variant="h4"
+                    sx={{
+                        textAlign: "center",
+                        mb: 1
+                    }}
+                >
+                    Inventory System
+                </Typography>
 
-                <h1>Prefeitura Municipal</h1>
+                <Typography
+                    sx={{
+                        textAlign: "center",
+                        color: "text.secondary",
+                        mb: 4
+                    }}
+                >
+                    Municipal Warehouse
+                </Typography>
 
-                <h2>Sistema de Estoque</h2>
-
-                <input
-                    type="text"
-                    placeholder="Usuário"
+                <TextField
+                    fullWidth
+                    label="Email"
+                    margin="normal"
                 />
 
-                <input
+                <TextField
+                    fullWidth
                     type="password"
-                    placeholder="Senha"
+                    label="Password"
+                    margin="normal"
                 />
 
-                <button onClick={onLogin}>
-                    Entrar
-                </button>
+                <Button
+                    variant="contained"
+                    fullWidth
+                    size="large"
+                    sx={{ mt: 2 }}
+                    onClick={() => navigate("/products")}
+                >
+                    Sign In
+                </Button>
 
-            </div>
+            </Paper>
 
-        </div>
-
+        </Box>
     );
-
 }
 
 export default Login;
