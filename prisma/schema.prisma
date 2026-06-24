@@ -7,16 +7,67 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
-  role  String @default("USER")
+// =========================
+// ENUMS
+// =========================
+
+enum Role {
+  ADMIN
+  USER
 }
 
+enum MovementType {
+  IN
+  OUT
+}
+
+// =========================
+// USUÁRIOS
+// =========================
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+
+  productsCreated Product[] @relation("CreatedProducts")
+  movements       Movement[]
+}
+
+// =========================
+// PRODUTOS
+// =========================
+
 model Product {
-  id       Int    @id @default(autoincrement())
-  name     String
-  code     String @unique
-  quantity Int
+  id          Int      @id @default(autoincrement())
+  name        String
+  code        String   @unique
+  description String?
+  quantity    Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  createdById Int
+  createdBy   User @relation("CreatedProducts", fields: [createdById], references: [id])
+
+  movements   Movement[]
+}
+
+// =========================
+// MOVIMENTAÇÕES
+// =========================
+
+model Movement {
+  id        Int           @id @default(autoincrement())
+  type      MovementType
+  quantity  Int
+  createdAt DateTime      @default(now())
+
+  userId    Int
+  user      User @relation(fields: [userId], references: [id])
+
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
 }
