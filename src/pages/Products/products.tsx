@@ -1,4 +1,9 @@
+import { useEffect, useState } from "react";
+
 import Layout from "../../components/Layout/layout";
+
+import type { Product } from "../../types/product";
+import { getProducts } from "../../services/productService";
 
 import {
     Button,
@@ -9,6 +14,22 @@ import {
 } from "@mui/material";
 
 function Products() {
+
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+
+        getProducts()
+            .then(setProducts)
+            .catch(console.error);
+
+    }, []);
+
+    const totalProducts = products.length;
+
+    const lowStockProducts = products.filter(
+        product => product.quantity <= 5
+    ).length;
 
     return (
 
@@ -27,7 +48,7 @@ function Products() {
                             </Typography>
 
                             <Typography variant="h3">
-                                245
+                                {totalProducts}
                             </Typography>
 
                         </CardContent>
@@ -47,7 +68,7 @@ function Products() {
                             </Typography>
 
                             <Typography variant="h3">
-                                12
+                                {lowStockProducts}
                             </Typography>
 
                         </CardContent>
@@ -63,11 +84,11 @@ function Products() {
                         <CardContent>
 
                             <Typography variant="h6">
-                                Transactions Today
+                                Products In Stock
                             </Typography>
 
                             <Typography variant="h3">
-                                32
+                                {products.length}
                             </Typography>
 
                         </CardContent>
@@ -78,10 +99,7 @@ function Products() {
 
             </Grid>
 
-            <Button
-                variant="contained"
-                size="large"
-            >
+            <Button variant="contained" size="large">
                 New Product
             </Button>
 
