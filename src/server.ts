@@ -15,7 +15,7 @@ export const prisma = new PrismaClient({ adapter });
 app.use(cors());
 app.use(express.json());
 
-app.get("/products", async (req, res) => {
+app.get("/products", async (_req, res) => {
   const products = await prisma.product.findMany();
   res.json(products);
 });
