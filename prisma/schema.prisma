@@ -1,22 +1,52 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum MovementType {
+  IN
+  OUT
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
-  role  String @default("USER")
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+
+  movements Movement[]
 }
 
 model Product {
-  id       Int    @id @default(autoincrement())
-  name     String
-  code     String @unique
-  quantity Int    @default(0)
+  id        Int      @id @default(autoincrement())
+  name      String
+  code      String   @unique
+  quantity  Int      @default(0)
+  createdAt DateTime @default(now())
+
+  movements Movement[]
+}
+
+model Movement {
+  id        Int          @id @default(autoincrement())
+  type      MovementType
+  quantity  Int
+  createdAt DateTime     @default(now())
+
+  userId    Int
+  productId Int
+
+  user      User     @relation(fields: [userId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
 }
