@@ -4,7 +4,8 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
-    Toolbar
+    Toolbar,
+    Divider,
 } from "@mui/material";
 
 import {
@@ -12,34 +13,36 @@ import {
     People,
     AdminPanelSettings,
     CompareArrows,
-    History
+    History,
 } from "@mui/icons-material";
 
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+
 import { useNavigate } from "react-router-dom";
+import { useThemeMode } from "../../theme/ThemeContext";
 
 const drawerWidth = 240;
 
 function Sidebar() {
-
     const navigate = useNavigate();
+    const { mode, toggleTheme } = useThemeMode();
 
     return (
-
         <Drawer
             variant="permanent"
             sx={{
                 width: drawerWidth,
                 flexShrink: 0,
                 "& .MuiDrawer-paper": {
-                    width: drawerWidth
-                }
+                    width: drawerWidth,
+                    boxSizing: "border-box",
+                },
             }}
         >
-
             <Toolbar />
 
             <List>
-
                 <ListItemButton onClick={() => navigate("/products")}>
                     <ListItemIcon>
                         <Inventory />
@@ -74,11 +77,22 @@ function Sidebar() {
                     </ListItemIcon>
                     <ListItemText primary="History" />
                 </ListItemButton>
-
             </List>
 
-        </Drawer>
+            <Divider />
 
+            <List>
+                <ListItemButton onClick={toggleTheme}>
+                    <ListItemIcon>
+                        {mode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+                    </ListItemIcon>
+
+                    <ListItemText
+                        primary={mode === "light" ? "Dark Mode" : "Light Mode"}
+                    />
+                </ListItemButton>
+            </List>
+        </Drawer>
     );
 }
 

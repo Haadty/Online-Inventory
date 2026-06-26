@@ -1,11 +1,8 @@
-# Dependências
 node_modules/
 
-# Build
 dist/
 build/
 
-# Logs
 logs/
 *.log
 npm-debug.log*
@@ -13,7 +10,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Variáveis de ambiente
 .env
 .env.*
 
@@ -21,20 +17,16 @@ pnpm-debug.log*
 .vite/
 .cache/
 
-# Cobertura
 coverage/
 
-# Arquivos do sistema
 .DS_Store
 Thumbs.db
 
-# IDEs
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
 .idea/
 
-# Arquivos temporários
 *.tmp
 *.temp
 /src/generated/prisma

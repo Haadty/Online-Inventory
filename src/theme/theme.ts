@@ -1,29 +1,29 @@
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#1565C0"
+export function getTheme(mode: "light" | "dark") {
+    return createTheme({
+        palette: {
+            mode,
+
+            primary: {
+                main: "#1565C0",
+            },
+            secondary: {
+                main: "#2E7D32",
+            },
+
+            background: {
+                default: mode === "light" ? "#F4F6F8" : "#121212",
+                paper: mode === "light" ? "#ffffff" : "#1e1e1e",
+            },
         },
-        secondary: {
-            main: "#2E7D32"
+
+        shape: {
+            borderRadius: 10,
         },
-        background: {
-            default: "#F4F6F8"
-        }
-    },
 
-    shape: {
-        borderRadius: 10
-    },
-
-    typography: {
-        fontFamily: [
-            "Inter",
-            "Roboto",
-            "Arial"
-        ].join(",")
-    }
-});
-
-export default theme;
+        typography: {
+            fontFamily: ["Inter", "Roboto", "Arial"].join(","),
+        },
+    });
+}

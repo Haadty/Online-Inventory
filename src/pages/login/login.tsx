@@ -14,14 +14,14 @@ function Login() {
 
     return (
 
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh"
-                }}
-            >
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh"
+            }}
+        >
             <Paper
                 elevation={4}
                 sx={{

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import Layout from "../../components/Layout/layout";
 
+import { DataGrid, type GridColDef } from "@mui/x-data-grid";
+
 import type { Product } from "../../types/product";
 import { getProducts } from "../../services/productService";
 
@@ -30,6 +32,13 @@ function Products() {
     const lowStockProducts = products.filter(
         product => product.quantity <= 5
     ).length;
+
+    const columns: GridColDef[] = [
+        { field: "id", headerName: "ID", width: 90 },
+        { field: "name", headerName: "Name", flex: 1 },
+        { field: "code", headerName: "Code", flex: 1 },
+        { field: "quantity", headerName: "Quantity", width: 150 },
+    ];
 
     return (
 
@@ -102,6 +111,14 @@ function Products() {
             <Button variant="contained" size="large">
                 New Product
             </Button>
+
+            <div style={{ height: 500, marginTop: 20 }}>
+                <DataGrid
+                    rows={products}
+                    columns={columns}
+                    pageSizeOptions={[5, 10]}
+                />
+            </div>
 
         </Layout>
 
