@@ -6,6 +6,7 @@ import {
     ListItemText,
     Toolbar,
     Divider,
+    Box
 } from "@mui/material";
 
 import {
@@ -37,47 +38,51 @@ function Sidebar() {
                 "& .MuiDrawer-paper": {
                     width: drawerWidth,
                     boxSizing: "border-box",
+                    display: "flex",
+                    flexDirection: "column",
                 },
             }}
         >
             <Toolbar />
 
-            <List>
-                <ListItemButton onClick={() => navigate("/products")}>
-                    <ListItemIcon>
-                        <Inventory />
-                    </ListItemIcon>
-                    <ListItemText primary="Products" />
-                </ListItemButton>
+            <Box sx={{ flex: 1 }}>
+                <List>
+                    <ListItemButton onClick={() => navigate("/products")}>
+                        <ListItemIcon>
+                            <Inventory />
+                        </ListItemIcon>
+                        <ListItemText primary="Products" />
+                    </ListItemButton>
 
-                <ListItemButton onClick={() => navigate("/users")}>
-                    <ListItemIcon>
-                        <People />
-                    </ListItemIcon>
-                    <ListItemText primary="Users" />
-                </ListItemButton>
+                    <ListItemButton onClick={() => navigate("/users")}>
+                        <ListItemIcon>
+                            <People />
+                        </ListItemIcon>
+                        <ListItemText primary="Users" />
+                    </ListItemButton>
 
-                <ListItemButton onClick={() => navigate("/admins")}>
-                    <ListItemIcon>
-                        <AdminPanelSettings />
-                    </ListItemIcon>
-                    <ListItemText primary="Admins" />
-                </ListItemButton>
+                    <ListItemButton onClick={() => navigate("/admins")}>
+                        <ListItemIcon>
+                            <AdminPanelSettings />
+                        </ListItemIcon>
+                        <ListItemText primary="Admins" />
+                    </ListItemButton>
 
-                <ListItemButton onClick={() => navigate("/transactions")}>
-                    <ListItemIcon>
-                        <CompareArrows />
-                    </ListItemIcon>
-                    <ListItemText primary="Transactions" />
-                </ListItemButton>
+                    <ListItemButton onClick={() => navigate("/transactions")}>
+                        <ListItemIcon>
+                            <CompareArrows />
+                        </ListItemIcon>
+                        <ListItemText primary="Transactions" />
+                    </ListItemButton>
 
-                <ListItemButton onClick={() => navigate("/history")}>
-                    <ListItemIcon>
-                        <History />
-                    </ListItemIcon>
-                    <ListItemText primary="History" />
-                </ListItemButton>
-            </List>
+                    <ListItemButton onClick={() => navigate("/history")}>
+                        <ListItemIcon>
+                            <History />
+                        </ListItemIcon>
+                        <ListItemText primary="History" />
+                    </ListItemButton>
+                </List>
+            </Box>
 
             <Divider />
 
