@@ -21,7 +21,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
 import { useNavigate } from "react-router-dom";
-import { useThemeMode } from "../../theme/ThemeContext";
+import { useThemeMode } from "../../theme/themeContext";
 
 const drawerWidth = 240;
 
