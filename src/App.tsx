@@ -4,7 +4,6 @@ import Login from "./pages/login/login";
 import Products from "./pages/products/products";
 import Users from "./pages/users/users";
 import Transactions from "./pages/transactions/transactions";
-import History from "./pages/history/history";
 import ProtectedRoute from "./components/protectedRoute";
 
 function App() {
@@ -34,15 +33,6 @@ function App() {
                 element={
                     <ProtectedRoute>
                         <Transactions />
-                    </ProtectedRoute>
-                }
-            />
-
-            <Route
-                path="/history"
-                element={
-                    <ProtectedRoute>
-                        <History />
                     </ProtectedRoute>
                 }
             />

@@ -13,14 +13,13 @@ import {
     Inventory,
     People,
     CompareArrows,
-    History,
 } from "@mui/icons-material";
 
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
 import { useNavigate } from "react-router-dom";
-import { useThemeMode } from "../../theme/themeContext";
+import { useThemeMode } from "../theme/themeContext";
 
 const drawerWidth = 240;
 
@@ -65,13 +64,6 @@ function Sidebar() {
                             <CompareArrows />
                         </ListItemIcon>
                         <ListItemText primary="Transactions" />
-                    </ListItemButton>
-
-                    <ListItemButton onClick={() => navigate("/history")}>
-                        <ListItemIcon>
-                            <History />
-                        </ListItemIcon>
-                        <ListItemText primary="History" />
                     </ListItemButton>
                 </List>
             </Box>
