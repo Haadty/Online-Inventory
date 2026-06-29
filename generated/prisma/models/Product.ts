@@ -29,35 +29,70 @@ export type AggregateProduct = {
 export type ProductAvgAggregateOutputType = {
   id: number | null
   quantity: number | null
+  minStock: number | null
+  maxStock: number | null
+  price: number | null
+  costPrice: number | null
 }
 
 export type ProductSumAggregateOutputType = {
   id: number | null
   quantity: number | null
+  minStock: number | null
+  maxStock: number | null
+  price: number | null
+  costPrice: number | null
 }
 
 export type ProductMinAggregateOutputType = {
   id: number | null
   name: string | null
   code: string | null
+  description: string | null
+  category: string | null
   quantity: number | null
+  minStock: number | null
+  maxStock: number | null
+  price: number | null
+  costPrice: number | null
+  location: string | null
+  status: $Enums.ProductStatus | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ProductMaxAggregateOutputType = {
   id: number | null
   name: string | null
   code: string | null
+  description: string | null
+  category: string | null
   quantity: number | null
+  minStock: number | null
+  maxStock: number | null
+  price: number | null
+  costPrice: number | null
+  location: string | null
+  status: $Enums.ProductStatus | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ProductCountAggregateOutputType = {
   id: number
   name: number
   code: number
+  description: number
+  category: number
   quantity: number
+  minStock: number
+  maxStock: number
+  price: number
+  costPrice: number
+  location: number
+  status: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -65,35 +100,70 @@ export type ProductCountAggregateOutputType = {
 export type ProductAvgAggregateInputType = {
   id?: true
   quantity?: true
+  minStock?: true
+  maxStock?: true
+  price?: true
+  costPrice?: true
 }
 
 export type ProductSumAggregateInputType = {
   id?: true
   quantity?: true
+  minStock?: true
+  maxStock?: true
+  price?: true
+  costPrice?: true
 }
 
 export type ProductMinAggregateInputType = {
   id?: true
   name?: true
   code?: true
+  description?: true
+  category?: true
   quantity?: true
+  minStock?: true
+  maxStock?: true
+  price?: true
+  costPrice?: true
+  location?: true
+  status?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type ProductMaxAggregateInputType = {
   id?: true
   name?: true
   code?: true
+  description?: true
+  category?: true
   quantity?: true
+  minStock?: true
+  maxStock?: true
+  price?: true
+  costPrice?: true
+  location?: true
+  status?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type ProductCountAggregateInputType = {
   id?: true
   name?: true
   code?: true
+  description?: true
+  category?: true
   quantity?: true
+  minStock?: true
+  maxStock?: true
+  price?: true
+  costPrice?: true
+  location?: true
+  status?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -187,8 +257,17 @@ export type ProductGroupByOutputType = {
   id: number
   name: string
   code: string
+  description: string | null
+  category: string | null
   quantity: number
+  minStock: number
+  maxStock: number | null
+  price: number | null
+  costPrice: number | null
+  location: string | null
+  status: $Enums.ProductStatus
   createdAt: Date
+  updatedAt: Date
   _count: ProductCountAggregateOutputType | null
   _avg: ProductAvgAggregateOutputType | null
   _sum: ProductSumAggregateOutputType | null
@@ -218,8 +297,17 @@ export type ProductWhereInput = {
   id?: Prisma.IntFilter<"Product"> | number
   name?: Prisma.StringFilter<"Product"> | string
   code?: Prisma.StringFilter<"Product"> | string
+  description?: Prisma.StringNullableFilter<"Product"> | string | null
+  category?: Prisma.StringNullableFilter<"Product"> | string | null
   quantity?: Prisma.IntFilter<"Product"> | number
+  minStock?: Prisma.IntFilter<"Product"> | number
+  maxStock?: Prisma.IntNullableFilter<"Product"> | number | null
+  price?: Prisma.FloatNullableFilter<"Product"> | number | null
+  costPrice?: Prisma.FloatNullableFilter<"Product"> | number | null
+  location?: Prisma.StringNullableFilter<"Product"> | string | null
+  status?: Prisma.EnumProductStatusFilter<"Product"> | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   movements?: Prisma.MovementListRelationFilter
 }
 
@@ -227,8 +315,17 @@ export type ProductOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrderInput | Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrderInput | Prisma.SortOrder
+  price?: Prisma.SortOrderInput | Prisma.SortOrder
+  costPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  location?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   movements?: Prisma.MovementOrderByRelationAggregateInput
 }
 
@@ -239,8 +336,17 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProductWhereInput[]
   NOT?: Prisma.ProductWhereInput | Prisma.ProductWhereInput[]
   name?: Prisma.StringFilter<"Product"> | string
+  description?: Prisma.StringNullableFilter<"Product"> | string | null
+  category?: Prisma.StringNullableFilter<"Product"> | string | null
   quantity?: Prisma.IntFilter<"Product"> | number
+  minStock?: Prisma.IntFilter<"Product"> | number
+  maxStock?: Prisma.IntNullableFilter<"Product"> | number | null
+  price?: Prisma.FloatNullableFilter<"Product"> | number | null
+  costPrice?: Prisma.FloatNullableFilter<"Product"> | number | null
+  location?: Prisma.StringNullableFilter<"Product"> | string | null
+  status?: Prisma.EnumProductStatusFilter<"Product"> | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   movements?: Prisma.MovementListRelationFilter
 }, "id" | "code">
 
@@ -248,8 +354,17 @@ export type ProductOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrderInput | Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrderInput | Prisma.SortOrder
+  price?: Prisma.SortOrderInput | Prisma.SortOrder
+  costPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  location?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ProductCountOrderByAggregateInput
   _avg?: Prisma.ProductAvgOrderByAggregateInput
   _max?: Prisma.ProductMaxOrderByAggregateInput
@@ -264,15 +379,33 @@ export type ProductScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Product"> | number
   name?: Prisma.StringWithAggregatesFilter<"Product"> | string
   code?: Prisma.StringWithAggregatesFilter<"Product"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  category?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
   quantity?: Prisma.IntWithAggregatesFilter<"Product"> | number
+  minStock?: Prisma.IntWithAggregatesFilter<"Product"> | number
+  maxStock?: Prisma.IntNullableWithAggregatesFilter<"Product"> | number | null
+  price?: Prisma.FloatNullableWithAggregatesFilter<"Product"> | number | null
+  costPrice?: Prisma.FloatNullableWithAggregatesFilter<"Product"> | number | null
+  location?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  status?: Prisma.EnumProductStatusWithAggregatesFilter<"Product"> | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
 }
 
 export type ProductCreateInput = {
   name: string
   code: string
+  description?: string | null
+  category?: string | null
   quantity?: number
+  minStock?: number
+  maxStock?: number | null
+  price?: number | null
+  costPrice?: number | null
+  location?: string | null
+  status?: $Enums.ProductStatus
   createdAt?: Date | string
+  updatedAt?: Date | string
   movements?: Prisma.MovementCreateNestedManyWithoutProductInput
 }
 
@@ -280,16 +413,34 @@ export type ProductUncheckedCreateInput = {
   id?: number
   name: string
   code: string
+  description?: string | null
+  category?: string | null
   quantity?: number
+  minStock?: number
+  maxStock?: number | null
+  price?: number | null
+  costPrice?: number | null
+  location?: string | null
+  status?: $Enums.ProductStatus
   createdAt?: Date | string
+  updatedAt?: Date | string
   movements?: Prisma.MovementUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  minStock?: Prisma.IntFieldUpdateOperationsInput | number
+  maxStock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  costPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   movements?: Prisma.MovementUpdateManyWithoutProductNestedInput
 }
 
@@ -297,8 +448,17 @@ export type ProductUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  minStock?: Prisma.IntFieldUpdateOperationsInput | number
+  maxStock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  costPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   movements?: Prisma.MovementUncheckedUpdateManyWithoutProductNestedInput
 }
 
@@ -306,62 +466,148 @@ export type ProductCreateManyInput = {
   id?: number
   name: string
   code: string
+  description?: string | null
+  category?: string | null
   quantity?: number
+  minStock?: number
+  maxStock?: number | null
+  price?: number | null
+  costPrice?: number | null
+  location?: string | null
+  status?: $Enums.ProductStatus
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProductUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  minStock?: Prisma.IntFieldUpdateOperationsInput | number
+  maxStock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  costPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  minStock?: Prisma.IntFieldUpdateOperationsInput | number
+  maxStock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  costPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  costPrice?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ProductAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  costPrice?: Prisma.SortOrder
 }
 
 export type ProductMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  costPrice?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ProductMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  costPrice?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ProductSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  minStock?: Prisma.SortOrder
+  maxStock?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  costPrice?: Prisma.SortOrder
 }
 
 export type ProductScalarRelationFilter = {
   is?: Prisma.ProductWhereInput
   isNot?: Prisma.ProductWhereInput
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type EnumProductStatusFieldUpdateOperationsInput = {
+  set?: $Enums.ProductStatus
 }
 
 export type ProductCreateNestedOneWithoutMovementsInput = {
@@ -381,16 +627,34 @@ export type ProductUpdateOneRequiredWithoutMovementsNestedInput = {
 export type ProductCreateWithoutMovementsInput = {
   name: string
   code: string
+  description?: string | null
+  category?: string | null
   quantity?: number
+  minStock?: number
+  maxStock?: number | null
+  price?: number | null
+  costPrice?: number | null
+  location?: string | null
+  status?: $Enums.ProductStatus
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProductUncheckedCreateWithoutMovementsInput = {
   id?: number
   name: string
   code: string
+  description?: string | null
+  category?: string | null
   quantity?: number
+  minStock?: number
+  maxStock?: number | null
+  price?: number | null
+  costPrice?: number | null
+  location?: string | null
+  status?: $Enums.ProductStatus
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ProductCreateOrConnectWithoutMovementsInput = {
@@ -412,16 +676,34 @@ export type ProductUpdateToOneWithWhereWithoutMovementsInput = {
 export type ProductUpdateWithoutMovementsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  minStock?: Prisma.IntFieldUpdateOperationsInput | number
+  maxStock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  costPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProductUncheckedUpdateWithoutMovementsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  minStock?: Prisma.IntFieldUpdateOperationsInput | number
+  maxStock?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  costPrice?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProductStatusFieldUpdateOperationsInput | $Enums.ProductStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -459,8 +741,17 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   name?: boolean
   code?: boolean
+  description?: boolean
+  category?: boolean
   quantity?: boolean
+  minStock?: boolean
+  maxStock?: boolean
+  price?: boolean
+  costPrice?: boolean
+  location?: boolean
+  status?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   movements?: boolean | Prisma.Product$movementsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["product"]>
@@ -469,27 +760,54 @@ export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   name?: boolean
   code?: boolean
+  description?: boolean
+  category?: boolean
   quantity?: boolean
+  minStock?: boolean
+  maxStock?: boolean
+  price?: boolean
+  costPrice?: boolean
+  location?: boolean
+  status?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   code?: boolean
+  description?: boolean
+  category?: boolean
   quantity?: boolean
+  minStock?: boolean
+  maxStock?: boolean
+  price?: boolean
+  costPrice?: boolean
+  location?: boolean
+  status?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectScalar = {
   id?: boolean
   name?: boolean
   code?: boolean
+  description?: boolean
+  category?: boolean
   quantity?: boolean
+  minStock?: boolean
+  maxStock?: boolean
+  price?: boolean
+  costPrice?: boolean
+  location?: boolean
+  status?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "quantity" | "createdAt", ExtArgs["result"]["product"]>
+export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "description" | "category" | "quantity" | "minStock" | "maxStock" | "price" | "costPrice" | "location" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
 export type ProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   movements?: boolean | Prisma.Product$movementsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -506,8 +824,17 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: number
     name: string
     code: string
+    description: string | null
+    category: string | null
     quantity: number
+    minStock: number
+    maxStock: number | null
+    price: number | null
+    costPrice: number | null
+    location: string | null
+    status: $Enums.ProductStatus
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["product"]>
   composites: {}
 }
@@ -935,8 +1262,17 @@ export interface ProductFieldRefs {
   readonly id: Prisma.FieldRef<"Product", 'Int'>
   readonly name: Prisma.FieldRef<"Product", 'String'>
   readonly code: Prisma.FieldRef<"Product", 'String'>
+  readonly description: Prisma.FieldRef<"Product", 'String'>
+  readonly category: Prisma.FieldRef<"Product", 'String'>
   readonly quantity: Prisma.FieldRef<"Product", 'Int'>
+  readonly minStock: Prisma.FieldRef<"Product", 'Int'>
+  readonly maxStock: Prisma.FieldRef<"Product", 'Int'>
+  readonly price: Prisma.FieldRef<"Product", 'Float'>
+  readonly costPrice: Prisma.FieldRef<"Product", 'Float'>
+  readonly location: Prisma.FieldRef<"Product", 'String'>
+  readonly status: Prisma.FieldRef<"Product", 'ProductStatus'>
   readonly createdAt: Prisma.FieldRef<"Product", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Product", 'DateTime'>
 }
     
 

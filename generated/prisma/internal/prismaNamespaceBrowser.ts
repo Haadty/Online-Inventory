@@ -75,7 +75,8 @@ export const UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   role: 'role',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -85,8 +86,17 @@ export const ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
   code: 'code',
+  description: 'description',
+  category: 'category',
   quantity: 'quantity',
-  createdAt: 'createdAt'
+  minStock: 'minStock',
+  maxStock: 'maxStock',
+  price: 'price',
+  costPrice: 'costPrice',
+  location: 'location',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -96,6 +106,7 @@ export const MovementScalarFieldEnum = {
   id: 'id',
   type: 'type',
   quantity: 'quantity',
+  reason: 'reason',
   createdAt: 'createdAt',
   userId: 'userId',
   productId: 'productId'
@@ -110,4 +121,12 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

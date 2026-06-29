@@ -12,7 +12,6 @@ import {
 import {
     Inventory,
     People,
-    AdminPanelSettings,
     CompareArrows,
     History,
 } from "@mui/icons-material";
@@ -61,13 +60,6 @@ function Sidebar() {
                         <ListItemText primary="Users" />
                     </ListItemButton>
 
-                    <ListItemButton onClick={() => navigate("/admins")}>
-                        <ListItemIcon>
-                            <AdminPanelSettings />
-                        </ListItemIcon>
-                        <ListItemText primary="Admins" />
-                    </ListItemButton>
-
                     <ListItemButton onClick={() => navigate("/transactions")}>
                         <ListItemIcon>
                             <CompareArrows />
@@ -89,11 +81,15 @@ function Sidebar() {
             <List>
                 <ListItemButton onClick={toggleTheme}>
                     <ListItemIcon>
-                        {mode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+                        {mode === "light"
+                            ? <DarkModeIcon />
+                            : <LightModeIcon />}
                     </ListItemIcon>
 
                     <ListItemText
-                        primary={mode === "light" ? "Dark Mode" : "Light Mode"}
+                        primary={mode === "light"
+                            ? "Dark Mode"
+                            : "Light Mode"}
                     />
                 </ListItemButton>
             </List>

@@ -19,7 +19,17 @@ export type Role = (typeof Role)[keyof typeof Role]
 
 export const MovementType = {
   IN: 'IN',
-  OUT: 'OUT'
+  OUT: 'OUT',
+  ADJUST: 'ADJUST'
 } as const
 
 export type MovementType = (typeof MovementType)[keyof typeof MovementType]
+
+
+export const ProductStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  OUT_OF_STOCK: 'OUT_OF_STOCK'
+} as const
+
+export type ProductStatus = (typeof ProductStatus)[keyof typeof ProductStatus]

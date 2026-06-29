@@ -63,6 +63,15 @@ async function main() {
 
 }
 
+await prisma.user.create({
+    data: {
+        name: "Administrator",
+        email: "admin@inventory.com",
+        password: "123456",
+        role: "ADMIN"
+    }
+});
+
 main()
   .catch((e) => {
     console.error(e);

@@ -44,6 +44,7 @@ export type MovementMinAggregateOutputType = {
   id: number | null
   type: $Enums.MovementType | null
   quantity: number | null
+  reason: string | null
   createdAt: Date | null
   userId: number | null
   productId: number | null
@@ -53,6 +54,7 @@ export type MovementMaxAggregateOutputType = {
   id: number | null
   type: $Enums.MovementType | null
   quantity: number | null
+  reason: string | null
   createdAt: Date | null
   userId: number | null
   productId: number | null
@@ -62,6 +64,7 @@ export type MovementCountAggregateOutputType = {
   id: number
   type: number
   quantity: number
+  reason: number
   createdAt: number
   userId: number
   productId: number
@@ -87,6 +90,7 @@ export type MovementMinAggregateInputType = {
   id?: true
   type?: true
   quantity?: true
+  reason?: true
   createdAt?: true
   userId?: true
   productId?: true
@@ -96,6 +100,7 @@ export type MovementMaxAggregateInputType = {
   id?: true
   type?: true
   quantity?: true
+  reason?: true
   createdAt?: true
   userId?: true
   productId?: true
@@ -105,6 +110,7 @@ export type MovementCountAggregateInputType = {
   id?: true
   type?: true
   quantity?: true
+  reason?: true
   createdAt?: true
   userId?: true
   productId?: true
@@ -201,6 +207,7 @@ export type MovementGroupByOutputType = {
   id: number
   type: $Enums.MovementType
   quantity: number
+  reason: string | null
   createdAt: Date
   userId: number
   productId: number
@@ -233,6 +240,7 @@ export type MovementWhereInput = {
   id?: Prisma.IntFilter<"Movement"> | number
   type?: Prisma.EnumMovementTypeFilter<"Movement"> | $Enums.MovementType
   quantity?: Prisma.IntFilter<"Movement"> | number
+  reason?: Prisma.StringNullableFilter<"Movement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
   userId?: Prisma.IntFilter<"Movement"> | number
   productId?: Prisma.IntFilter<"Movement"> | number
@@ -244,6 +252,7 @@ export type MovementOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  reason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
@@ -258,6 +267,7 @@ export type MovementWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.MovementWhereInput | Prisma.MovementWhereInput[]
   type?: Prisma.EnumMovementTypeFilter<"Movement"> | $Enums.MovementType
   quantity?: Prisma.IntFilter<"Movement"> | number
+  reason?: Prisma.StringNullableFilter<"Movement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
   userId?: Prisma.IntFilter<"Movement"> | number
   productId?: Prisma.IntFilter<"Movement"> | number
@@ -269,6 +279,7 @@ export type MovementOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  reason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
@@ -286,6 +297,7 @@ export type MovementScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Movement"> | number
   type?: Prisma.EnumMovementTypeWithAggregatesFilter<"Movement"> | $Enums.MovementType
   quantity?: Prisma.IntWithAggregatesFilter<"Movement"> | number
+  reason?: Prisma.StringNullableWithAggregatesFilter<"Movement"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Movement"> | Date | string
   userId?: Prisma.IntWithAggregatesFilter<"Movement"> | number
   productId?: Prisma.IntWithAggregatesFilter<"Movement"> | number
@@ -294,6 +306,7 @@ export type MovementScalarWhereWithAggregatesInput = {
 export type MovementCreateInput = {
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutMovementsInput
   product: Prisma.ProductCreateNestedOneWithoutMovementsInput
@@ -303,6 +316,7 @@ export type MovementUncheckedCreateInput = {
   id?: number
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   userId: number
   productId: number
@@ -311,6 +325,7 @@ export type MovementUncheckedCreateInput = {
 export type MovementUpdateInput = {
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutMovementsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutMovementsNestedInput
@@ -320,6 +335,7 @@ export type MovementUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   productId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -329,6 +345,7 @@ export type MovementCreateManyInput = {
   id?: number
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   userId: number
   productId: number
@@ -337,6 +354,7 @@ export type MovementCreateManyInput = {
 export type MovementUpdateManyMutationInput = {
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -344,6 +362,7 @@ export type MovementUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   productId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -363,6 +382,7 @@ export type MovementCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
@@ -379,6 +399,7 @@ export type MovementMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
@@ -388,6 +409,7 @@ export type MovementMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
@@ -491,6 +513,7 @@ export type EnumMovementTypeFieldUpdateOperationsInput = {
 export type MovementCreateWithoutUserInput = {
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutMovementsInput
 }
@@ -499,6 +522,7 @@ export type MovementUncheckedCreateWithoutUserInput = {
   id?: number
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   productId: number
 }
@@ -535,6 +559,7 @@ export type MovementScalarWhereInput = {
   id?: Prisma.IntFilter<"Movement"> | number
   type?: Prisma.EnumMovementTypeFilter<"Movement"> | $Enums.MovementType
   quantity?: Prisma.IntFilter<"Movement"> | number
+  reason?: Prisma.StringNullableFilter<"Movement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
   userId?: Prisma.IntFilter<"Movement"> | number
   productId?: Prisma.IntFilter<"Movement"> | number
@@ -543,6 +568,7 @@ export type MovementScalarWhereInput = {
 export type MovementCreateWithoutProductInput = {
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutMovementsInput
 }
@@ -551,6 +577,7 @@ export type MovementUncheckedCreateWithoutProductInput = {
   id?: number
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   userId: number
 }
@@ -584,6 +611,7 @@ export type MovementCreateManyUserInput = {
   id?: number
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   productId: number
 }
@@ -591,6 +619,7 @@ export type MovementCreateManyUserInput = {
 export type MovementUpdateWithoutUserInput = {
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutMovementsNestedInput
 }
@@ -599,6 +628,7 @@ export type MovementUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   productId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -607,6 +637,7 @@ export type MovementUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   productId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -615,6 +646,7 @@ export type MovementCreateManyProductInput = {
   id?: number
   type: $Enums.MovementType
   quantity: number
+  reason?: string | null
   createdAt?: Date | string
   userId: number
 }
@@ -622,6 +654,7 @@ export type MovementCreateManyProductInput = {
 export type MovementUpdateWithoutProductInput = {
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutMovementsNestedInput
 }
@@ -630,6 +663,7 @@ export type MovementUncheckedUpdateWithoutProductInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -638,6 +672,7 @@ export type MovementUncheckedUpdateManyWithoutProductInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -648,6 +683,7 @@ export type MovementSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   type?: boolean
   quantity?: boolean
+  reason?: boolean
   createdAt?: boolean
   userId?: boolean
   productId?: boolean
@@ -659,6 +695,7 @@ export type MovementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   type?: boolean
   quantity?: boolean
+  reason?: boolean
   createdAt?: boolean
   userId?: boolean
   productId?: boolean
@@ -670,6 +707,7 @@ export type MovementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   type?: boolean
   quantity?: boolean
+  reason?: boolean
   createdAt?: boolean
   userId?: boolean
   productId?: boolean
@@ -681,12 +719,13 @@ export type MovementSelectScalar = {
   id?: boolean
   type?: boolean
   quantity?: boolean
+  reason?: boolean
   createdAt?: boolean
   userId?: boolean
   productId?: boolean
 }
 
-export type MovementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "quantity" | "createdAt" | "userId" | "productId", ExtArgs["result"]["movement"]>
+export type MovementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "quantity" | "reason" | "createdAt" | "userId" | "productId", ExtArgs["result"]["movement"]>
 export type MovementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
@@ -710,6 +749,7 @@ export type $MovementPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     id: number
     type: $Enums.MovementType
     quantity: number
+    reason: string | null
     createdAt: Date
     userId: number
     productId: number
@@ -1141,6 +1181,7 @@ export interface MovementFieldRefs {
   readonly id: Prisma.FieldRef<"Movement", 'Int'>
   readonly type: Prisma.FieldRef<"Movement", 'MovementType'>
   readonly quantity: Prisma.FieldRef<"Movement", 'Int'>
+  readonly reason: Prisma.FieldRef<"Movement", 'String'>
   readonly createdAt: Prisma.FieldRef<"Movement", 'DateTime'>
   readonly userId: Prisma.FieldRef<"Movement", 'Int'>
   readonly productId: Prisma.FieldRef<"Movement", 'Int'>
