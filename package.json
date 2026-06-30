@@ -1,7 +1,7 @@
 {
-  "name": "project_web",
+  "name": "online_inventory",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:reset": "prisma migrate reset",
     "seed": "tsx prisma/seed.ts",
-    "setup": "setup.js"
+    "setup": "node setup.js"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
