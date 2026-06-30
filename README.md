@@ -1,34 +1,33 @@
-# 📦 Inventory System
+# Inventory System
 
-A **learning project** built to study and practice full-stack web development using React, Node.js, and Prisma.
-
-This system simulates an IT inventory management environment, focusing on tracking equipment entries, exits, and user assignments inside a technical support workflow.
+A **learning project** built to study and practice full-stack web development.
 
 ---
 
-# 🧱 Tech Stack
+## Installation
 
-## Frontend
-- React 19
-- Vite
-- Material UI (MUI)
-- MUI DataGrid
-- React Router DOM
-
-## Backend
-- Node.js (Express)
-- TypeScript
-- Prisma ORM
-
-## Database
-- SQLite (local development)
-
----
-
-# ⚙️ Installation
-
-## 1. Clone the repository
+### Run full setup
 
 ```bash
-git clone <REPOSITORY_URL>
-cd project_web
+npm run setup
+
+This command will:
+
+Install dependencies
+Generate Prisma Client
+Create the database
+Run migrations
+Seed the database with initial data
+
+### Running the project
+
+```bash
+npm run start
+
+Automatic start the full system
+
+### Useful scripts
+
+npm run setup — Full project setup (install + database + seed)
+npm run start — Run project
+npm run seed — Populate database with sample data

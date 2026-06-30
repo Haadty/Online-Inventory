@@ -14,7 +14,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:reset": "prisma migrate reset",
     "seed": "tsx prisma/seed.ts",
-    "setup": "npm install && npm run prisma:generate && npm run prisma:migrate && npm run seed"
+    "setup": "setup.js"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
