@@ -2,37 +2,40 @@ node_modules/
 
 dist/
 build/
+out/
+
+prisma/dev.db
+prisma/dev.db-journal
+*.db
+*.sqlite
+*.sqlite3
+
+src/generated/
+prisma/generated/
+
+.env
+.env.*
+!.env.example
 
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 
-.env
-.env.*
-
-# Cache
 .vite/
 .cache/
+.next/
 
 coverage/
 
 .DS_Store
 Thumbs.db
 
-.vscode/*
+.vscode/
 !.vscode/extensions.json
 !.vscode/settings.json
 .idea/
 
 *.tmp
 *.temp
-/src/generated/prisma
-
-/src/generated/prisma
-
-/src/generated/prisma
-
-/src/generated/prisma

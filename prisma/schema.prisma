@@ -34,7 +34,9 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  movements Movement[]
+  adminMovements Movement[] @relation("AdminMovements")
+
+  receivedMovements Movement[] @relation("UserMovements")
 }
 
 model Product {
@@ -63,18 +65,20 @@ model Product {
 }
 
 model Movement {
-  id        Int          @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
 
   type      MovementType
   quantity  Int
+  reason    String?
 
-  reason    String?      
+  createdAt DateTime @default(now())
 
-  createdAt DateTime     @default(now())
+  adminId   Int
+  admin     User @relation("AdminMovements", fields: [adminId], references: [id])
 
-  userId    Int
+  recipientId Int?
+  recipient   User? @relation("UserMovements", fields: [recipientId], references: [id])
+
   productId Int
-
-  user      User     @relation(fields: [userId], references: [id])
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
 }

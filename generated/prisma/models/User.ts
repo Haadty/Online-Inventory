@@ -232,7 +232,8 @@ export type UserWhereInput = {
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  movements?: Prisma.MovementListRelationFilter
+  adminMovements?: Prisma.MovementListRelationFilter
+  receivedMovements?: Prisma.MovementListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -243,7 +244,8 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  movements?: Prisma.MovementOrderByRelationAggregateInput
+  adminMovements?: Prisma.MovementOrderByRelationAggregateInput
+  receivedMovements?: Prisma.MovementOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -257,7 +259,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  movements?: Prisma.MovementListRelationFilter
+  adminMovements?: Prisma.MovementListRelationFilter
+  receivedMovements?: Prisma.MovementListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -295,7 +298,8 @@ export type UserCreateInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
-  movements?: Prisma.MovementCreateNestedManyWithoutUserInput
+  adminMovements?: Prisma.MovementCreateNestedManyWithoutAdminInput
+  receivedMovements?: Prisma.MovementCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -306,7 +310,8 @@ export type UserUncheckedCreateInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
-  movements?: Prisma.MovementUncheckedCreateNestedManyWithoutUserInput
+  adminMovements?: Prisma.MovementUncheckedCreateNestedManyWithoutAdminInput
+  receivedMovements?: Prisma.MovementUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUpdateInput = {
@@ -316,7 +321,8 @@ export type UserUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  movements?: Prisma.MovementUpdateManyWithoutUserNestedInput
+  adminMovements?: Prisma.MovementUpdateManyWithoutAdminNestedInput
+  receivedMovements?: Prisma.MovementUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -327,7 +333,8 @@ export type UserUncheckedUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  movements?: Prisma.MovementUncheckedUpdateManyWithoutUserNestedInput
+  adminMovements?: Prisma.MovementUncheckedUpdateManyWithoutAdminNestedInput
+  receivedMovements?: Prisma.MovementUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -402,6 +409,11 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -422,30 +434,47 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type UserCreateNestedOneWithoutMovementsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutMovementsInput, Prisma.UserUncheckedCreateWithoutMovementsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMovementsInput
+export type UserCreateNestedOneWithoutAdminMovementsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdminMovementsInput, Prisma.UserUncheckedCreateWithoutAdminMovementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdminMovementsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutMovementsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutMovementsInput, Prisma.UserUncheckedCreateWithoutMovementsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMovementsInput
-  upsert?: Prisma.UserUpsertWithoutMovementsInput
+export type UserCreateNestedOneWithoutReceivedMovementsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedMovementsInput, Prisma.UserUncheckedCreateWithoutReceivedMovementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedMovementsInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMovementsInput, Prisma.UserUpdateWithoutMovementsInput>, Prisma.UserUncheckedUpdateWithoutMovementsInput>
 }
 
-export type UserCreateWithoutMovementsInput = {
+export type UserUpdateOneRequiredWithoutAdminMovementsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdminMovementsInput, Prisma.UserUncheckedCreateWithoutAdminMovementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdminMovementsInput
+  upsert?: Prisma.UserUpsertWithoutAdminMovementsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAdminMovementsInput, Prisma.UserUpdateWithoutAdminMovementsInput>, Prisma.UserUncheckedUpdateWithoutAdminMovementsInput>
+}
+
+export type UserUpdateOneWithoutReceivedMovementsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedMovementsInput, Prisma.UserUncheckedCreateWithoutReceivedMovementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedMovementsInput
+  upsert?: Prisma.UserUpsertWithoutReceivedMovementsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedMovementsInput, Prisma.UserUpdateWithoutReceivedMovementsInput>, Prisma.UserUncheckedUpdateWithoutReceivedMovementsInput>
+}
+
+export type UserCreateWithoutAdminMovementsInput = {
   name: string
   email: string
   password: string
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  receivedMovements?: Prisma.MovementCreateNestedManyWithoutRecipientInput
 }
 
-export type UserUncheckedCreateWithoutMovementsInput = {
+export type UserUncheckedCreateWithoutAdminMovementsInput = {
   id?: number
   name: string
   email: string
@@ -453,34 +482,62 @@ export type UserUncheckedCreateWithoutMovementsInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  receivedMovements?: Prisma.MovementUncheckedCreateNestedManyWithoutRecipientInput
 }
 
-export type UserCreateOrConnectWithoutMovementsInput = {
+export type UserCreateOrConnectWithoutAdminMovementsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutMovementsInput, Prisma.UserUncheckedCreateWithoutMovementsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdminMovementsInput, Prisma.UserUncheckedCreateWithoutAdminMovementsInput>
 }
 
-export type UserUpsertWithoutMovementsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutMovementsInput, Prisma.UserUncheckedUpdateWithoutMovementsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutMovementsInput, Prisma.UserUncheckedCreateWithoutMovementsInput>
+export type UserCreateWithoutReceivedMovementsInput = {
+  name: string
+  email: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminMovements?: Prisma.MovementCreateNestedManyWithoutAdminInput
+}
+
+export type UserUncheckedCreateWithoutReceivedMovementsInput = {
+  id?: number
+  name: string
+  email: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminMovements?: Prisma.MovementUncheckedCreateNestedManyWithoutAdminInput
+}
+
+export type UserCreateOrConnectWithoutReceivedMovementsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedMovementsInput, Prisma.UserUncheckedCreateWithoutReceivedMovementsInput>
+}
+
+export type UserUpsertWithoutAdminMovementsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAdminMovementsInput, Prisma.UserUncheckedUpdateWithoutAdminMovementsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdminMovementsInput, Prisma.UserUncheckedCreateWithoutAdminMovementsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutMovementsInput = {
+export type UserUpdateToOneWithWhereWithoutAdminMovementsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutMovementsInput, Prisma.UserUncheckedUpdateWithoutMovementsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAdminMovementsInput, Prisma.UserUncheckedUpdateWithoutAdminMovementsInput>
 }
 
-export type UserUpdateWithoutMovementsInput = {
+export type UserUpdateWithoutAdminMovementsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  receivedMovements?: Prisma.MovementUpdateManyWithoutRecipientNestedInput
 }
 
-export type UserUncheckedUpdateWithoutMovementsInput = {
+export type UserUncheckedUpdateWithoutAdminMovementsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -488,6 +545,39 @@ export type UserUncheckedUpdateWithoutMovementsInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  receivedMovements?: Prisma.MovementUncheckedUpdateManyWithoutRecipientNestedInput
+}
+
+export type UserUpsertWithoutReceivedMovementsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReceivedMovementsInput, Prisma.UserUncheckedUpdateWithoutReceivedMovementsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedMovementsInput, Prisma.UserUncheckedCreateWithoutReceivedMovementsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReceivedMovementsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReceivedMovementsInput, Prisma.UserUncheckedUpdateWithoutReceivedMovementsInput>
+}
+
+export type UserUpdateWithoutReceivedMovementsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminMovements?: Prisma.MovementUpdateManyWithoutAdminNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReceivedMovementsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminMovements?: Prisma.MovementUncheckedUpdateManyWithoutAdminNestedInput
 }
 
 
@@ -496,11 +586,13 @@ export type UserUncheckedUpdateWithoutMovementsInput = {
  */
 
 export type UserCountOutputType = {
-  movements: number
+  adminMovements: number
+  receivedMovements: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  movements?: boolean | UserCountOutputTypeCountMovementsArgs
+  adminMovements?: boolean | UserCountOutputTypeCountAdminMovementsArgs
+  receivedMovements?: boolean | UserCountOutputTypeCountReceivedMovementsArgs
 }
 
 /**
@@ -516,7 +608,14 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountAdminMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MovementWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReceivedMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MovementWhereInput
 }
 
@@ -529,7 +628,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  movements?: boolean | Prisma.User$movementsArgs<ExtArgs>
+  adminMovements?: boolean | Prisma.User$adminMovementsArgs<ExtArgs>
+  receivedMovements?: boolean | Prisma.User$receivedMovementsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -565,7 +665,8 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  movements?: boolean | Prisma.User$movementsArgs<ExtArgs>
+  adminMovements?: boolean | Prisma.User$adminMovementsArgs<ExtArgs>
+  receivedMovements?: boolean | Prisma.User$receivedMovementsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -574,7 +675,8 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    movements: Prisma.$MovementPayload<ExtArgs>[]
+    adminMovements: Prisma.$MovementPayload<ExtArgs>[]
+    receivedMovements: Prisma.$MovementPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -978,7 +1080,8 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  movements<T extends Prisma.User$movementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$movementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  adminMovements<T extends Prisma.User$adminMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$adminMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  receivedMovements<T extends Prisma.User$receivedMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1406,9 +1509,33 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.movements
+ * User.adminMovements
  */
-export type User$movementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$adminMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Movement
+   */
+  select?: Prisma.MovementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Movement
+   */
+  omit?: Prisma.MovementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MovementInclude<ExtArgs> | null
+  where?: Prisma.MovementWhereInput
+  orderBy?: Prisma.MovementOrderByWithRelationInput | Prisma.MovementOrderByWithRelationInput[]
+  cursor?: Prisma.MovementWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MovementScalarFieldEnum | Prisma.MovementScalarFieldEnum[]
+}
+
+/**
+ * User.receivedMovements
+ */
+export type User$receivedMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Movement
    */

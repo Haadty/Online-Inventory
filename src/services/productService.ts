@@ -1,23 +1,27 @@
 import { API_URL } from "./api";
-
-import type { Product } from "../types/product";
+import type { Product, ProductInput } from "../types/product";
 
 export async function getProducts(): Promise<Product[]> {
     const res = await fetch(`${API_URL}/products`);
     return res.json();
 }
 
-export async function createProduct(data: Omit<Product, "id">) {
+export async function createProduct(data: ProductInput) {
     const res = await fetch(`${API_URL}/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     });
 
+    if (!res.ok) {
+        const error = await res.text();
+        throw new Error(error);
+    }
+
     return res.json();
 }
 
-export async function updateProduct(id: number, data: Partial<Product>) {
+export async function updateProduct(id: number, data: ProductInput) {
     const res = await fetch(`${API_URL}/products/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

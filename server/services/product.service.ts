@@ -35,5 +35,7 @@ export async function deleteProduct(id: number) {
         method: "DELETE"
     });
 
-    return res.json();
+    if (!res.ok) throw new Error("Failed to delete product");
+
+    return res.json().catch(() => null);
 }

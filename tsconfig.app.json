@@ -18,5 +18,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "seeds/seed.ts", "server"]
+  "include": ["src", "prisma/seed.ts", "server"]
 }

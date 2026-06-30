@@ -7,41 +7,86 @@ export async function getProducts(_req: Request, res: Response) {
 }
 
 export async function createProduct(req: Request, res: Response) {
-    const { name, code, quantity, description, price, category, location } = req.body;
-
-    const product = await prisma.product.create({
-        data: {
+    try {
+        const {
             name,
             code,
             quantity,
             description,
             price,
             category,
-            location
-        }
-    });
+            location,
+            minStock,
+            maxStock,
+            costPrice,
+            status
+        } = req.body;
 
-    res.json(product);
+        const product = await prisma.product.create({
+            data: {
+                name,
+                code,
+                quantity: quantity ?? 0,
+                description: description ?? null,
+                price: price ?? null,
+                category: category ?? null,
+                location: location ?? null,
+                minStock: minStock ?? 0,
+                maxStock: maxStock ?? null,
+                costPrice: costPrice ?? null,
+                status: status ?? "ACTIVE"
+            }
+        });
+
+        return res.status(201).json(product);
+    } catch (err) {
+        console.error("PRISMA ERROR FULL:", err);
+        return res.status(500).json({
+            error: err instanceof Error ? err.message : err
+        });
+    }
 }
 
 export async function updateProduct(req: Request, res: Response) {
-    const { id } = req.params;
-    const { name, code, quantity, description, price, category, location } = req.body;
+    try {
+        const { id } = req.params;
 
-    const product = await prisma.product.update({
-        where: { id: Number(id) },
-        data: {
+        const {
             name,
             code,
             quantity,
             description,
             price,
             category,
-            location
-        }
-    });
+            location,
+            minStock,
+            maxStock,
+            costPrice,
+            status
+        } = req.body;
 
-    res.json(product);
+        const product = await prisma.product.update({
+            where: { id: Number(id) },
+            data: {
+                name,
+                code,
+                quantity,
+                description,
+                price,
+                category,
+                location,
+                minStock,
+                maxStock,
+                costPrice,
+                status
+            }
+        });
+
+        return res.json(product);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Failed to update product" });
+    }
 }
 
 export async function deleteProduct(req: Request, res: Response) {

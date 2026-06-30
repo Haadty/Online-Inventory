@@ -7,7 +7,7 @@ import {
     Typography
 } from "@mui/material";
 
-import Sidebar from "../sidebar/sidebar";
+import Sidebar from "./sidebar";
 
 interface LayoutProps {
     title: string;

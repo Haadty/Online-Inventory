@@ -1,11 +1,14 @@
-export type MovementType = "IN" | "OUT";
-
 export interface Movement {
     id: number;
-    type: MovementType;
+    type: "IN" | "OUT" | "ADJUST";
     quantity: number;
-    createdAt: string;
+    reason?: string;
 
-    userId: number;
+    adminId: number;
+    recipientId?: number | null;
     productId: number;
+
+    admin?: { id: number; name: string };
+    recipient?: { id: number; name: string };
+    product?: { id: number; name: string };
 }
