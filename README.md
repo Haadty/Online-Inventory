@@ -8,7 +8,9 @@ A **learning project** built to study and practice full-stack web development.
 
 ### Run full setup
 
-```bash npm run setup
+```bash 
+
+npm run setup
 
 This command will:
 
