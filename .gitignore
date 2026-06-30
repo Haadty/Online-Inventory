@@ -4,12 +4,15 @@ dist/
 build/
 out/
 
+prisma/migrations
+
 prisma/dev.db
 prisma/dev.db-journal
 *.db
 *.sqlite
 *.sqlite3
 
+generated/
 src/generated/
 prisma/generated/
 

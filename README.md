@@ -8,8 +8,7 @@ A **learning project** built to study and practice full-stack web development.
 
 ### Run full setup
 
-```bash
-npm run setup
+```bash npm run setup
 
 This command will:
 
@@ -21,13 +20,12 @@ Seed the database with initial data
 
 ### Running the project
 
-```bash
-npm run start
+```bash npm run start
 
-Automatic start the full system
+Automatic start system
 
 ### Useful scripts
 
-npm run setup — Full project setup (install + database + seed)
-npm run start — Run project
-npm run seed — Populate database with sample data
+#### npm run setup — Full project setup (install + database + seed)
+#### npm run start — Run project
+#### npm run seed — Populate database with sample data
